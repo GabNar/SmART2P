@@ -93,7 +93,9 @@ data_reference.numero_neuronas = data_aux.numero_neuronas;
 data_reference.linesPerFrame = data_aux.linesPerFrame;
 data_reference.pixels_per_line = data_aux.pixels_per_line; 
 
-save([save_dir file_name '_reference_surround_' num2str(data.scan_margin_extra_pixels) '_n_' num2str(data.numero_neuronas) '_time_' num2str(round(distancia*4.4e-3))],'data_reference')
+% save([save_dir file_name '_reference_surround_' num2str(data.scan_margin_extra_pixels) '_n_' num2str(data.numero_neuronas) '_time_' num2str(round(distancia*4.4e-3))],'data_reference')
+save([save_dir file_name '_reference_surround_' num2str(data.scan_margin_extra_pixels) '_n_' num2str(data.numero_neuronas) '_time_' num2str(round(distancia*4.4e-3)) '.mat'],'data_reference')
+
 if~(exist([save_dir file_name '_reference_surround_' num2str(data.scan_margin_extra_pixels) '_n_' num2str(data.numero_neuronas) '_time_' num2str(round(distancia*4.4e-3)) '.mat'],'File'))
    errordlg('Attention the trajectory was not saved properly!!!','Warning');
 else

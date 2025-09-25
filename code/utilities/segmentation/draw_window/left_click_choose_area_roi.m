@@ -14,5 +14,11 @@ elseif strcmp(get(src,'SelectionType'),'normal')
     set(src,'WindowButtonDownFcn',@left_click_choose_threshold)
     current_point = data.current_point_choose_area_roi;
     data.flag_marker_pos = true;
+    data.size_area_roi = 10; % gab
     plot_chosen_pixels(current_point);
+
+    %%%%%%%%%%%%%%% gab 2025/09/23 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    evnt = struct('VerticalScrollCount',-inf);
+    choose_threshold([],evnt) 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end

@@ -398,7 +398,7 @@ if ~isequal(data.mode,'Linescan') && ~isequal(data.mode,'freehand')
             mkdir(save_dir);
         end
         data.scan_traj = scan_traj;
-        saveas(h,[save_dir 'scan_path'],'png')
+        % saveas(h,[save_dir 'scan_path'],'png') % gab 2025/09/23
         %here I calculate distances from all points to the scan trajectory. I have
         %changed this so it matches with the transformation done by twoD_to_oneD
         [aux1, aux2] =  meshgrid(1:data.pixels_per_line,1:data.linesPerFrame);

@@ -4,17 +4,22 @@ global data
 hold on
 size_image = size(data.imagesc.CData);
 
-if evnt.VerticalScrollCount > 0
-    data.snr_thr = min([99,data.snr_thr + 1]);
-elseif evnt.VerticalScrollCount < 0
-    data.snr_thr = max([1,data.snr_thr - 1]);
+if evnt.VerticalScrollCount==-inf
+    data.snr_thr = 0; % gab 2025/09/23
+else
+    if evnt.VerticalScrollCount > 0
+        data.snr_thr = min([99,data.snr_thr + 1]);
+    elseif evnt.VerticalScrollCount < 0
+        data.snr_thr = max([1,data.snr_thr - 1]);
+    end
 end
 threshold = prctile(data.mat_choose_roi(:),data.snr_thr);
 while length(find(data.mat_choose_roi>threshold))<min(data.min_px_roi,length(data.mat_choose_roi(:)))%isempty(find(data.mat_choose_roi>threshold))
     data.snr_thr = data.snr_thr-1;
     threshold = prctile(data.mat_choose_roi(:),data.snr_thr);
 end
- data.chosen_pixels = find(data.mat_choose_roi>threshold);
+ % data.chosen_pixels = find(data.mat_choose_roi>threshold);
+ data.chosen_pixels = find(data.mat_choose_roi>=threshold); % gab 2025/09/23
  [~,~,index_aux] = intersect(data.pixels_outside_ellipse,data.chosen_pixels);
  data.chosen_pixels(index_aux) = [];
  data.chosen_pixels = oneD_to_twoD(size(data.mat_choose_roi,1),data.chosen_pixels);
