@@ -1216,11 +1216,11 @@ if isequal(choice,'Yes')
     end
 end
 
-if ~isequal(data.mode,'Linescan') && ~isequal(data.mode,'freehand')
+% if ~isequal(data.mode,'Linescan') && ~isequal(data.mode,'freehand')
+%     save([pathname '/' filename],'data','-v7.3')
+% else
     save([pathname '/' filename],'data','-v7.3')
-else
-    save([pathname '/' filename],'data','-v7.3')
-end
+% end
 
 
 data = data_original;
